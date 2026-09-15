@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <!-- ترميز الأحرف العربية -->
+    <meta charset="UTF-8" />
+    <!-- التجاوب مع الشاشات -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- عنوان الصفحة -->
+    <title>معرض النخبة - من نحن</title>
+    <!-- ملف التنسيق -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- اتصال مسبق لتسريع تحميل الخطوط والصور -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://picsum.photos" />
+    <!-- خط Cairo من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <!-- تطبيق الوضع الليلي فوراً لمنع وميض الصفحة -->
+    <script>
+      if (localStorage.getItem("darkMode") === "true") {
+        document.documentElement.classList.add("dark-mode-pending");
+      }
+    </script>
+    <style>
+      .dark-mode-pending body {
+        background-color: #1c1917;
+        color: #f5f5f4;
+      }
+    </style>
+    <meta name="color-scheme" content="light dark" />
+  </head>
+  <body>
+    <!-- ========== شريط التنقل ========== -->
+    <nav class="navbar">
+      <div class="container">
+        <!-- الشعار -->
+        <div class="logo">
+          <h2>🏎️ النخبة</h2>
+        </div>
+        <!-- الروابط -->
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="cars.html">السيارات</a></li>
+          <li><a href="about.html" class="active">من نحن</a></li>
+          <li><a href="contact.html">اتصل بنا</a></li>
+          <li><a href="login.php">دخول</a></li>
+        </ul>
+        <!-- الأزرار -->
+        <div class="nav-actions">
+          <button id="darkModeBtn" class="btn-icon">🌙</button>
+          <button id="cartBtn" class="btn-icon">
+            🛒 <span id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== ترويسة الصفحة ========== -->
+    <section class="page-header">
+      <div class="container">
+        <h1>من نحن</h1>
+        <p>تعرّف على قصة معرض النخبة</p>
+      </div>
+    </section>
+
+    <!-- ========== قسم الساعة ========== -->
+    <section class="clock-section">
+      <div class="container">
+        <h2 class="section-title">🕐 الوقت الآن</h2>
+        <div class="countdown">
+          <div class="time-box">
+            <span id="liveTime">00:00:00</span>
+            <small>الوقت</small>
+          </div>
+          <div class="time-box">
+            <span id="liveDate">--</span>
+            <small>التاريخ</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== قسم القصة ========== -->
+    <section class="about-section">
+      <div class="container">
+        <h2 class="section-title">قصتنا</h2>
+        <p>
+          تأسس معرض النخبة عام 2015 برؤية واضحة: توفير أفخم السيارات العالمية
+          بأسعار تنافسية وخدمة عملاء استثنائية.
+        </p>
+        <div id="moreContent" class="more-content">
+          <p>
+            نعمل مع أكبر الشركات المصنعة عالمياً مثل لكزس، مرسيدس، BMW، وأودي
+            لنقدم لكم أحدث الموديلات بضمان شامل.
+          </p>
+          <p>
+            فريقنا من الخبراء مستعد لمساعدتك في اختيار السيارة المثالية التي
+            تناسب احتياجاتك وميزانيتك.
+          </p>
+        </div>
+        <button id="showMoreBtn" class="btn-primary">👁️ عرض المزيد</button>
+      </div>
+    </section>
+
+    <!-- ========== قسم الإحصائيات ========== -->
+    <section class="stats-section">
+      <div class="container">
+        <h2 class="section-title">📊 أرقامنا</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>+2000</h3>
+            <p>عميل سعيد</p>
+          </div>
+          <div class="stat-card">
+            <h3>+150</h3>
+            <p>سيارة متاحة</p>
+          </div>
+          <div class="stat-card">
+            <h3>10</h3>
+            <p>سنوات خبرة</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== التذييل ========== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col">
+            <h3>🏎️ النخبة</h3>
+            <p>أفخم السيارات العالمية</p>
+          </div>
+          <div class="footer-col">
+            <h3>روابط سريعة</h3>
+            <ul>
+              <li><a href="cars.html">السيارات</a></li>
+              <li><a href="contact.html">اتصل بنا</a></li>
+              <li><a href="login.php">دخول</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h3>تابعنا</h3>
+            <div class="social">
+              <a href="#" class="social-icon">📘</a>
+              <a href="#" class="social-icon">📷</a>
+              <a href="#" class="social-icon"></a>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© 2026 معرض النخبة. جميع الحقوق محفوظة.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" class="back-to-top">↑</button>
+
+    <!-- حاوية الإشعارات -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- ربط JavaScript -->
+    <script src="js/script.js" defer></script>
+  </body>
+</html>

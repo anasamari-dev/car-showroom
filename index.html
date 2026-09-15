@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- تحديد ترميز الأحرف لدعم العربية -->
+    <meta charset="UTF-8">
+    <!-- جعل الموقع متجاوب مع جميع الشاشات -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- عنوان الصفحة في المتصفح -->
+    <title>معرض النخبة للسيارات</title>
+    <!-- ربط ملف التنسيق الخارجي -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- اتصال مسبق لتسريع تحميل الخطوط والصور -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://picsum.photos">
+    <!-- خط Cairo من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- تطبيق الوضع الليلي فوراً لمنع وميض الصفحة -->
+    <script>
+      if (localStorage.getItem("darkMode") === "true") {
+        document.documentElement.classList.add("dark-mode-pending");
+      }
+    </script>
+    <style>
+      .dark-mode-pending body {
+        background-color: #1c1917;
+        color: #f5f5f4;
+      }
+    </style>
+    <!-- مطابقة ألوان المتصفح مع الثيم -->
+    <meta name="color-scheme" content="light dark">
+</head>
+<body>
+    
+    <!-- ========== شريط التنقل العلوي ========== -->
+    <nav class="navbar">
+        <!-- حاوية لتوسيط المحتوى -->
+        <div class="container">
+            <!-- شعار المعرض -->
+            <div class="logo">
+                <h2>🏎️ النخبة</h2>
+            </div>
+            <!-- قائمة الروابط -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">الرئيسية</a></li>
+                <li><a href="cars.html">السيارات</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+                <li><a href="login.php">دخول</a></li>
+            </ul>
+            <!-- أزرار الشريط -->
+            <div class="nav-actions">
+                <!-- زر تبديل الوضع الليلي -->
+                <button id="darkModeBtn" class="btn-icon">🌙</button>
+                <!-- زر السلة -->
+                <button id="cartBtn" class="btn-icon">
+                    🛒 <span id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== السلايدر (العروض) ========== -->
+    <section class="slider">
+        <!-- حاوية الشرائح -->
+        <div class="slides">
+            <!-- الشريحة الأولى -->
+            <div class="slide active">
+                <img src="https://picsum.photos/seed/car1/1600/600" alt="عرض 1" width="1600" height="600" fetchpriority="high" decoding="async">
+                <div class="slide-content">
+                    <h1>أفخم السيارات العالمية</h1>
+                    <p>خصم 20% على جميع الموديلات 2026</p>
+                    <a href="#featured" class="btn-primary">تصفح الآن</a>
+                </div>
+            </div>
+            <!-- الشريحة الثانية -->
+            <div class="slide">
+                <img src="https://picsum.photos/seed/car2/1600/600" alt="عرض 2" width="1600" height="600" loading="lazy" decoding="async">
+                <div class="slide-content">
+                    <h1>سيارات رياضية حصرية</h1>
+                    <p>تجربة قيادة لا تُنسى</p>
+                    <a href="#featured" class="btn-primary">اكتشف المزيد</a>
+                </div>
+            </div>
+            <!-- الشريحة الثالثة -->
+            <div class="slide">
+                <img src="https://picsum.photos/seed/car3/1600/600" alt="عرض 3" width="1600" height="600" loading="lazy" decoding="async">
+                <div class="slide-content">
+                    <h1>ضمان 5 سنوات</h1>
+                    <p>على جميع السيارات</p>
+                    <a href="#featured" class="btn-primary">تواصل معنا</a>
+                </div>
+            </div>
+        </div>
+        <!-- زر السابق -->
+        <button class="slider-btn prev" id="prevSlide">❮</button>
+        <!-- زر التالي -->
+        <button class="slider-btn next" id="nextSlide">❯</button>
+    </section>
+
+    <!-- ========== المؤقت التنازلي ========== -->
+    <section class="countdown-section">
+        <div class="container">
+            <h2 class="section-title"> العرض ينتهي خلال</h2>
+            <div class="countdown">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <small>يوم</small>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <small>ساعة</small>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <small>دقيقة</small>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <small>ثانية</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== البحث ========== -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 ابحث عن سيارة...">
+                <button id="searchBtn" class="btn-primary">بحث</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== الفلترة حسب العلامة ========== -->
+    <section id="featured" class="cars-section">
+        <div class="container">
+            <h2 class="section-title">🚗 سياراتنا المميزة</h2>
+            <!-- أزرار الفلترة -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-brand="all">الكل</button>
+                <button class="filter-btn" data-brand="lexus">لكزس</button>
+                <button class="filter-btn" data-brand="toyota">تويوتا</button>
+                <button class="filter-btn" data-brand="bmw">BMW</button>
+                <button class="filter-btn" data-brand="mercedes">مرسيدس</button>
+                <button class="filter-btn" data-brand="audi">أودي</button>
+            </div>
+            <!-- شبكة عرض السيارات -->
+            <div id="carsGrid" class="cars-grid"></div>
+        </div>
+    </section>
+
+    <!-- ========== التذييل ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>🏎️ النخبة</h3>
+                    <p>أفخم السيارات العالمية بأفضل الأسعار</p>
+                </div>
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="cars.html">السيارات</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تابعنا</h3>
+                    <div class="social">
+                        <a href="#" class="social-icon"></a>
+                        <a href="#" class="social-icon">📷</a>
+                        <a href="#" class="social-icon"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2026 معرض النخبة. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" class="back-to-top">↑</button>
+
+    <!-- نافذة تفاصيل السيارة -->
+    <div id="carModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modalImage" alt="">
+            <h2 id="modalName"></h2>
+            <p id="modalBrand"></p>
+            <p id="modalDesc"></p>
+            <p class="price" id="modalPrice"></p>
+            <button id="modalAddToCart" class="btn-primary">🛒 احجز الآن</button>
+        </div>
+    </div>
+
+    <!-- حاوية الإشعارات -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- ربط ملف JavaScript -->
+    <script src="js/script.js" defer></script>
+</body>
+</html>
