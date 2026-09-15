@@ -12,7 +12,8 @@
     <!-- اتصال مسبق لتسريع تحميل الخطوط والصور -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://picsum.photos">
+    <link rel="preconnect" href="https://thumb.wikimedia.org">
+    <link rel="preconnect" href="https://images.pexels.com">
     <!-- خط Cairo من Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <!-- تطبيق الوضع الليلي فوراً لمنع وميض الصفحة -->
@@ -20,6 +21,7 @@
       if (localStorage.getItem("darkMode") === "true") {
         document.documentElement.classList.add("dark-mode-pending");
       }
+      document.documentElement.classList.add("js");
     </script>
     <style>
       .dark-mode-pending body {
@@ -66,7 +68,7 @@
         <div class="slides">
             <!-- الشريحة الأولى -->
             <div class="slide active">
-                <img src="https://picsum.photos/seed/car1/1600/600" alt="عرض 1" width="1600" height="600" fetchpriority="high" decoding="async">
+                <img src="https://images.pexels.com/photos/29566871/pexels-photo-29566871.jpeg?auto=compress&cs=tinysrgb&w=1600&h=600&fit=crop" alt="معرض السيارات" width="1600" height="600" fetchpriority="high" decoding="async">
                 <div class="slide-content">
                     <h1>أفخم السيارات العالمية</h1>
                     <p>خصم 20% على جميع الموديلات 2026</p>
@@ -75,7 +77,7 @@
             </div>
             <!-- الشريحة الثانية -->
             <div class="slide">
-                <img src="https://picsum.photos/seed/car2/1600/600" alt="عرض 2" width="1600" height="600" loading="lazy" decoding="async">
+                <img src="https://images.pexels.com/photos/7629179/pexels-photo-7629179.jpeg?auto=compress&cs=tinysrgb&w=1600&h=600&fit=crop" alt="سيارات فاخرة" width="1600" height="600" loading="lazy" decoding="async">
                 <div class="slide-content">
                     <h1>سيارات رياضية حصرية</h1>
                     <p>تجربة قيادة لا تُنسى</p>
@@ -84,7 +86,7 @@
             </div>
             <!-- الشريحة الثالثة -->
             <div class="slide">
-                <img src="https://picsum.photos/seed/car3/1600/600" alt="عرض 3" width="1600" height="600" loading="lazy" decoding="async">
+                <img src="https://images.pexels.com/photos/37147592/pexels-photo-37147592.jpeg?auto=compress&cs=tinysrgb&w=1600&h=600&fit=crop" alt="سيارة رياضية" width="1600" height="600" loading="lazy" decoding="async">
                 <div class="slide-content">
                     <h1>ضمان 5 سنوات</h1>
                     <p>على جميع السيارات</p>
@@ -145,6 +147,16 @@
                 <button class="filter-btn" data-brand="bmw">BMW</button>
                 <button class="filter-btn" data-brand="mercedes">مرسيدس</button>
                 <button class="filter-btn" data-brand="audi">أودي</button>
+                <button class="filter-btn" data-brand="ford">فورد</button>
+                <button class="filter-btn" data-brand="porsche">بورش</button>
+                <button class="filter-btn" data-brand="hyundai">هيونداي</button>
+                <button class="filter-btn" data-brand="honda">هوندا</button>
+                <button class="filter-btn" data-brand="nissan">نيسان</button>
+                <button class="filter-btn" data-brand="chevrolet">شفرولية</button>
+                <button class="filter-btn" data-brand="mitsubishi">ميتسوبيشي</button>
+                <button class="filter-btn" data-brand="cadillac">كاديلاك</button>
+                <button class="filter-btn" data-brand="gmc">جي ام سي</button>
+                <button class="filter-btn" data-brand="subaru">سوبارو</button>
             </div>
             <!-- شبكة عرض السيارات -->
             <div id="carsGrid" class="cars-grid"></div>

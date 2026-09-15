@@ -74,7 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- اتصال مسبق لتسريع تحميل الخطوط والصور -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://picsum.photos">
+    <link rel="preconnect" href="https://thumb.wikimedia.org">
+    <link rel="preconnect" href="https://images.pexels.com">
     <!-- خط Cairo من Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <!-- تطبيق الوضع الليلي فوراً لمنع وميض الصفحة -->
@@ -82,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       if (localStorage.getItem("darkMode") === "true") {
         document.documentElement.classList.add("dark-mode-pending");
       }
+      document.documentElement.classList.add("js");
     </script>
     <style>
       .dark-mode-pending body {
