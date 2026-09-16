@@ -18,22 +18,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
     <!-- تطبيق الوضع الليلي فوراً لمنع وميض الصفحة -->
     <script>
+      // قراءة تفضيل الوضع الليلي: إن كان مفعّلاً نجهّز الصفحة للثيم الداكن
       if (localStorage.getItem("darkMode") === "true") {
+        // إضافة صنف التجهيز الداكن على الجذر لمنع الوميض الأبيض
         document.documentElement.classList.add("dark-mode-pending");
       }
+      // إضافة صنف js: إخبار CSS أن الجافاسكربت يعمل لتفعيل حركات الظهور عند التمرير
       document.documentElement.classList.add("js");
     </script>
+    <!-- تنسيق مؤقت للوضع الليلي قبل تحميل ملف CSS (يمنع الوميض الأبيض) -->
     <style>
+      /* تطبيق الخلفية والنص الداكنين مباشرة على body */
+      /* تنسيق مؤقت: خلفية داكنة للجسم قبل اكتمال تحميل ملف CSS */
       .dark-mode-pending body {
         background-color: #1c1917;
         color: #f5f5f4;
       }
     </style>
+    <!-- مطابقة ألوان المتصفح مع الثيم -->
     <meta name="color-scheme" content="light dark" />
   </head>
   <body>
     <!-- ========== شريط التنقل ========== -->
     <nav class="navbar">
+      <!-- حاوية شريط التنقل (لتوسيط المحتوى) -->
       <div class="container">
         <div class="logo">
           <h2>🏎️ النخبة</h2>
@@ -46,7 +54,9 @@
           <li><a href="login.php">دخول</a></li>
         </ul>
         <div class="nav-actions">
+          <!-- زر تبديل الوضع الليلي/النهاري -->
           <button id="darkModeBtn" class="btn-icon">🌙</button>
+          <!-- زر السلة: الشارة تُظهر عدد السيارات المحجوزة -->
           <button id="cartBtn" class="btn-icon">
             🛒 <span id="cartCount">0</span>
           </button>
@@ -56,24 +66,32 @@
 
     <!-- ========== ترويسة الصفحة ========== -->
     <section class="page-header">
+      <!-- حاوية ترويسة الصفحة -->
       <div class="container">
+        <!-- عنوان الصفحة -->
         <h1>اتصل بنا</h1>
+        <!-- وصف مختصر أسفل العنوان -->
         <p>يسعدنا تواصلك معنا</p>
       </div>
     </section>
 
     <!-- ========== معلومات التواصل ========== -->
     <section class="contact-info-section">
+      <!-- حاوية قسم معلومات التواصل -->
       <div class="container">
+        <!-- شبكة بطاقات معلومات التواصل: ثلاثة أعمدة -->
         <div class="contact-info-grid">
+          <!-- بطاقة 1: العنوان -->
           <div class="contact-card">
             <h3>📍 العنوان</h3>
             <p>الرياض - المملكة العربية السعودية</p>
           </div>
+          <!-- بطاقة 2: رقم الهاتف (dir=ltr للعرض الصحيح للأرقام) -->
           <div class="contact-card">
             <h3>📞 الهاتف</h3>
             <p dir="ltr">+966 50 123 4567</p>
           </div>
+          <!-- بطاقة 3: البريد الإلكتروني -->
           <div class="contact-card">
             <h3>✉️ البريد</h3>
             <p>info@elite-cars.com</p>
@@ -84,7 +102,9 @@
 
     <!-- ========== نموذج التواصل ========== -->
     <section class="contact-section">
+      <!-- حاوية نموذج التواصل -->
       <div class="container">
+        <!-- عنوان قسم النموذج -->
         <h2 class="section-title">📨 أرسل رسالتك</h2>
 
         <!-- النموذج: novalidate للتحقق المخصص -->
@@ -129,12 +149,16 @@
 
     <!-- ========== التذييل ========== -->
     <footer class="footer">
+        <!-- حاوية التذييل: تجمع الأعمدة وحقوق النشر -->
       <div class="container">
+        <!-- حاوية أعمدة التذييل الثلاثة -->
         <div class="footer-content">
+          <!-- العمود الأول: تعريف مختصر بالمعرض -->
           <div class="footer-col">
             <h3>🏎️ النخبة</h3>
             <p>أفخم السيارات العالمية</p>
           </div>
+          <!-- العمود الثاني: روابط سريعة للصفحات -->
           <div class="footer-col">
             <h3>روابط سريعة</h3>
             <ul>
@@ -143,25 +167,29 @@
               <li><a href="login.php">دخول</a></li>
             </ul>
           </div>
+          <!-- العمود الثالث: وسائل التواصل الاجتماعي -->
           <div class="footer-col">
             <h3>تابعنا</h3>
+            <!-- صف أيقونات التواصل الاجتماعي -->
             <div class="social">
+              <!-- أيقونات التواصل الاجتماعي (روابط تجريبية #) -->
               <a href="#" class="social-icon">📘</a>
               <a href="#" class="social-icon">📷</a>
               <a href="#" class="social-icon">🐦</a>
             </div>
           </div>
         </div>
+        <!-- سطر حقوق النشر -->
         <div class="copyright">
           <p>© 2026 معرض النخبة. جميع الحقوق محفوظة.</p>
         </div>
       </div>
     </footer>
 
-    <!-- زر العودة للأعلى -->
+    <!-- زر العودة لأعلى الصفحة: يظهر عند النزول في الصفحة -->
     <button id="backToTop" class="back-to-top">↑</button>
 
-    <!-- حاوية الإشعارات -->
+    <!-- حاوية الإشعارات: يعرض فيها JavaScript رسائل الإرسال والتنبيهات -->
     <div id="toastContainer" class="toast-container"></div>
 
     <!-- ربط JavaScript -->

@@ -18,12 +18,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <!-- تطبيق الوضع الليلي فوراً لمنع وميض الصفحة -->
     <script>
+      // قراءة تفضيل الوضع الليلي: إن كان مفعّلاً نجهّز الصفحة للثيم الداكن
       if (localStorage.getItem("darkMode") === "true") {
+        // إضافة صنف التجهيز الداكن على الجذر لمنع الوميض الأبيض
         document.documentElement.classList.add("dark-mode-pending");
       }
+      // إضافة صنف js: إخبار CSS أن الجافاسكربت يعمل لتفعيل حركات الظهور عند التمرير
       document.documentElement.classList.add("js");
     </script>
+    <!-- تنسيق مؤقت للوضع الليلي قبل تحميل ملف CSS (يمنع الوميض الأبيض) -->
     <style>
+      /* تطبيق الخلفية والنص الداكنين مباشرة على body */
+      /* تنسيق مؤقت: خلفية داكنة للجسم قبل اكتمال تحميل ملف CSS */
       .dark-mode-pending body {
         background-color: #1c1917;
         color: #f5f5f4;
@@ -102,21 +108,28 @@
 
     <!-- ========== المؤقت التنازلي ========== -->
     <section class="countdown-section">
+        <!-- حاوية قسم المؤقت التنازلي -->
         <div class="container">
+            <!-- عنوان قسم المؤقت التنازلي -->
             <h2 class="section-title"> العرض ينتهي خلال</h2>
+            <!-- حاوية مربعات الوقت الأربعة -->
             <div class="countdown">
+                <!-- مربع الأيام -->
                 <div class="time-box">
                     <span id="days">00</span>
                     <small>يوم</small>
                 </div>
+                <!-- مربع الساعات -->
                 <div class="time-box">
                     <span id="hours">00</span>
                     <small>ساعة</small>
                 </div>
+                <!-- مربع الدقائق -->
                 <div class="time-box">
                     <span id="minutes">00</span>
                     <small>دقيقة</small>
                 </div>
+                <!-- مربع الثواني: يُحدّث كل ثانية بJavaScript -->
                 <div class="time-box">
                     <span id="seconds">00</span>
                     <small>ثانية</small>
@@ -127,9 +140,13 @@
 
     <!-- ========== البحث ========== -->
     <section class="search-section">
+        <!-- حاوية قسم البحث -->
         <div class="container">
+            <!-- صندوق البحث: حقل نص + زر بحث -->
             <div class="search-box">
+                <!-- حقل إدخال نص البحث عن سيارة -->
                 <input type="text" id="searchInput" placeholder="🔍 ابحث عن سيارة...">
+                <!-- زر تنفيذ البحث -->
                 <button id="searchBtn" class="btn-primary">بحث</button>
             </div>
         </div>
@@ -137,7 +154,9 @@
 
     <!-- ========== الفلترة حسب العلامة ========== -->
     <section id="featured" class="cars-section">
+        <!-- حاوية قسم عرض السيارات -->
         <div class="container">
+            <!-- عنوان قسم عرض السيارات -->
             <h2 class="section-title">🚗 سياراتنا المميزة</h2>
             <!-- أزرار الفلترة -->
             <div class="filter-buttons">
@@ -165,12 +184,16 @@
 
     <!-- ========== التذييل ========== -->
     <footer class="footer">
+        <!-- حاوية التذييل: تجمع الأعمدة وحقوق النشر -->
         <div class="container">
+            <!-- حاوية أعمدة التذييل الثلاثة -->
             <div class="footer-content">
+                <!-- العمود الأول: تعريف مختصر بالمعرض -->
                 <div class="footer-col">
                     <h3>🏎️ النخبة</h3>
                     <p>أفخم السيارات العالمية بأفضل الأسعار</p>
                 </div>
+                <!-- العمود الثاني: روابط سريعة للصفحات -->
                 <div class="footer-col">
                     <h3>روابط سريعة</h3>
                     <ul>
@@ -179,15 +202,19 @@
                         <li><a href="contact.html">اتصل بنا</a></li>
                     </ul>
                 </div>
+                <!-- العمود الثالث: وسائل التواصل الاجتماعي -->
                 <div class="footer-col">
                     <h3>تابعنا</h3>
+                    <!-- حاوية أيقونات التواصل -->
                     <div class="social">
+                        <!-- أيقونات التواصل الاجتماعي (روابط تجريبية #) -->
                         <a href="#" class="social-icon"></a>
                         <a href="#" class="social-icon">📷</a>
                         <a href="#" class="social-icon"></a>
                     </div>
                 </div>
             </div>
+                <!-- سطر حقوق النشر -->
             <div class="copyright">
                 <p>© 2026 معرض النخبة. جميع الحقوق محفوظة.</p>
             </div>
@@ -199,12 +226,19 @@
 
     <!-- نافذة تفاصيل السيارة -->
     <div id="carModal" class="modal">
+        <!-- صندوق محتوى النافذة: يتبع الثيم الفاتح/الداكن -->
         <div class="modal-content">
+            <!-- زر إغلاق النافذة (×) -->
             <span class="close-modal">&times;</span>
+            <!-- صورة السيارة داخل النافذة -->
             <img id="modalImage" alt="">
+            <!-- اسم السيارة -->
             <h2 id="modalName"></h2>
+            <!-- اسم الشركة المصنعة -->
             <p id="modalBrand"></p>
+            <!-- وصف السيارة -->
             <p id="modalDesc"></p>
+            <!-- سعر السيارة -->
             <p class="price" id="modalPrice"></p>
             <button id="modalAddToCart" class="btn-primary">🛒 احجز الآن</button>
         </div>

@@ -2,7 +2,16 @@
    ملف JavaScript - معرض النخبة للسيارات
    ===================================================== */
 
-/* ========== 1) بيانات السيارات (مصفوفة + كائنات) ========== */
+/* ========== 1) بيانات السيارات (مصفوفة + كائنات) ==========
+   مصفوفة "cars" هي قلب المعرض: كل عنصر داخلها = سيارة واحدة.
+   الحقول داخل كل كائن:
+   - id    : رقم فريد يميز السيارة (يُستخدم في البحث والسلة والنافذة)
+   - brand : اسم الشركة بحروف لاتينية صغيرة (مطابق لأزرار الفلترة)
+   - name  : اسم السيارة الظاهر للزائر بالعربية
+   - price : السعر بالدولار (يُعرض تلقائياً بفواصل الآلاف)
+   - image : رابط الصورة الحقيقية من ويكيميديا كومنز
+   - desc  : وصف قصير يظهر تحت اسم السيارة
+   ========================================================== */
 const cars = [
   {
     id: 1,
@@ -84,6 +93,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Audi_Q8_1X7A6004.jpg/960px-Audi_Q8_1X7A6004.jpg",
     desc: "كوبيه SUV",
   },
+  /* --- لكزس: IS 350 و RX 350 --- */
   {
     id: 11,
     brand: "lexus",
@@ -100,6 +110,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Lexus_RX_350_front.jpg/960px-Lexus_RX_350_front.jpg",
     desc: "SUV عائلية مريحة",
   },
+  /* --- تويوتا: كورولا و هايلكس --- */
   {
     id: 13,
     brand: "toyota",
@@ -116,6 +127,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Toyota_HiLux_GR_Sport_1X7A7281.jpg/960px-Toyota_HiLux_GR_Sport_1X7A7281.jpg",
     desc: "بيك أب قوي ومتين",
   },
+  /* --- BMW: X5 و M4 --- */
   {
     id: 15,
     brand: "bmw",
@@ -132,6 +144,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/BMW_M4_Coupe_%28F82%29_front.JPG/960px-BMW_M4_Coupe_%28F82%29_front.JPG",
     desc: "كوبيه رياضي أسطوري",
   },
+  /* --- مرسيدس: E-Class و GLE --- */
   {
     id: 17,
     brand: "mercedes",
@@ -148,6 +161,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/2018_Mercedes-Benz_GLE_350d_4MATIC_front.jpg/960px-2018_Mercedes-Benz_GLE_350d_4MATIC_front.jpg",
     desc: "فخامة عائلية",
   },
+  /* --- أودي: A4 و Q7 --- */
   {
     id: 19,
     brand: "audi",
@@ -164,6 +178,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/3rd_gen_Audi_Q7_front_-_Autowizja.jpg/960px-3rd_gen_Audi_Q7_front_-_Autowizja.jpg",
     desc: "رحابة وفخامة",
   },
+  /* --- فورد (4 موديلات): موستانغ، F-150، إكسبلورر، إكسبديشن --- */
   {
     id: 21,
     brand: "ford",
@@ -196,6 +211,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/2025_Ford_Expedition_Tremor%2C_front_NYIAS_2025.jpg/960px-2025_Ford_Expedition_Tremor%2C_front_NYIAS_2025.jpg",
     desc: "قوة عائلية ضخمة",
   },
+  /* --- بورش (4 موديلات): 911، كايين، باناميرا، ماكان --- */
   {
     id: 25,
     brand: "porsche",
@@ -228,6 +244,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Porsche_Macan_%28XAB%29_IMG_2425.jpg/960px-Porsche_Macan_%28XAB%29_IMG_2425.jpg",
     desc: "كومباكت رياضية",
   },
+  /* --- هيونداي (4 موديلات): إلنترا، توسان، سوناتا، سانتا في --- */
   {
     id: 29,
     brand: "hyundai",
@@ -260,6 +277,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/2024_Hyundai_Santa_Fe_%28MX5%29_IMG_5295.jpg/960px-2024_Hyundai_Santa_Fe_%28MX5%29_IMG_5295.jpg",
     desc: "عائلية واسعة",
   },
+  /* --- هوندا (4 موديلات): سيفيك، أكورد، CR-V، سيتي --- */
   {
     id: 33,
     brand: "honda",
@@ -292,6 +310,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/2010-2012_Honda_City_front.jpg/960px-2010-2012_Honda_City_front.jpg",
     desc: "كومباكت اقتصادية",
   },
+  /* --- نيسان (4 موديلات): باترول، التيما، سنترا، إكس-تريل --- */
   {
     id: 37,
     brand: "nissan",
@@ -324,6 +343,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Nissan_X-Trail_%28T33%29_1X7A7179.jpg/960px-Nissan_X-Trail_%28T33%29_1X7A7179.jpg",
     desc: "عائلية متعددة الاستخدامات",
   },
+  /* --- شفرولية (4 موديلات): تاهو، كامارو، سيلفرادو، ماليبو --- */
   {
     id: 41,
     brand: "chevrolet",
@@ -356,6 +376,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Chevrolet_Malibu_front.jpg/960px-Chevrolet_Malibu_front.jpg",
     desc: "سيدان متزنة",
   },
+  /* --- ميتسوبيشي (4 موديلات): باجيرو، لانسر، أوتلاندر، إكليبس --- */
   {
     id: 45,
     brand: "mitsubishi",
@@ -388,6 +409,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Mitsubishi_Eclipse_Cross_PHEV_1X7A6477.jpg/960px-Mitsubishi_Eclipse_Cross_PHEV_1X7A6477.jpg",
     desc: "تصميم كوبيه جريء",
   },
+  /* --- كاديلاك (4 موديلات): إسكاليد، CT5، XT5، XT4 --- */
   {
     id: 49,
     brand: "cadillac",
@@ -420,6 +442,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/2024_Cadillac_XT4_front_view.jpg/960px-2024_Cadillac_XT4_front_view.jpg",
     desc: "كومباكت فاخرة",
   },
+  /* --- جي ام سي (4 موديلات): يوكون، سييرا، أكاديا، تيرين --- */
   {
     id: 53,
     brand: "gmc",
@@ -452,6 +475,7 @@ const cars = [
     image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/2025_GMC_Terrain_front_view.jpg/960px-2025_GMC_Terrain_front_view.jpg",
     desc: "كروس أوفر متينة",
   },
+  /* --- سوبارو (4 موديلات): أوتباك، فورستر، WRX، ليجاسي --- */
   {
     id: 57,
     brand: "subaru",
@@ -493,11 +517,16 @@ function displayCars(carList) {
   /* حماية: الخروج إذا لم توجد الشبكة */
   if (!grid) return;
 
+  /* متغير لتجميع بطاقات HTML قبل حقنها دفعة واحدة */
   let html = "";
 
   /* حلقة forEach للمرور على كل سيارة */
   carList.forEach(function (car, index) {
-    /* بناء بطاقة HTML مع تأخير متدرج للأنيميشن */
+    /* بناء بطاقة HTML مع تأخير متدرج للأنيميشن:
+       card-anim = أنيميشن الدخول، animation-delay = الترتيب × 0.08 ث
+       الصورة: lazy = تُحمّل عند الاقتراب منها فقط، أبعاد صريحة تمنع القفز
+       الاسم والوصف والسعر (toLocaleString تضيف فواصل الآلاف)
+       زرّان: "احجز الآن" يستدعي addToCart و"التفاصيل" يفتح النافذة */
     html += `
             <div class="car-card card-anim" style="animation-delay:${(index * 0.08).toFixed(2)}s">
                 <img src="${car.image}" alt="${car.name}" width="600" height="400" loading="lazy" decoding="async">
@@ -524,11 +553,14 @@ function displayCars(carList) {
 /* عرض جميع السيارات عند التحميل */
 displayCars(cars);
 
-/* ========== 3) البحث ========== */
-const searchInput = document.getElementById("searchInput");
-const searchBtn = document.getElementById("searchBtn");
+/* ========== 3) البحث ==========
+   بحث فوري: كل حرف تكتبه يعيد بناء الشبكة بالنتائج المطابقة */
+const searchInput = document.getElementById("searchInput"); /* حقل الكتابة */
+const searchBtn = document.getElementById("searchBtn"); /* زر "بحث" */
 
+/* دالة البحث: تستقبل الكلمة وتعرض السيارات المطابقة فقط */
 function searchCars(keyword) {
+  /* تحويل الكلمة لأحرف صغيرة لتوحيد المقارنة */
   const lower = keyword.toLowerCase();
   /* تصفية السيارات حسب الاسم أو الوصف */
   const results = cars.filter(function (car) {
@@ -542,16 +574,19 @@ function searchCars(keyword) {
 
 /* حماية: تشغيل البحث فقط إذا وجد */
 if (searchInput && searchBtn) {
+  /* البحث الفوري مع كل حرف يُكتب */
   searchInput.addEventListener("input", function () {
     searchCars(searchInput.value);
   });
+  /* البحث عند الضغط على زر "بحث" */
   searchBtn.addEventListener("click", function () {
     searchCars(searchInput.value);
   });
 }
 
-/* ========== 4) الفلترة حسب العلامة ========== */
-const filterBtns = document.querySelectorAll(".filter-btn");
+/* ========== 4) الفلترة حسب العلامة ==========
+   كل زر يحمل data-brand؛ عند الضغط تُعرض سيارات تلك الشركة فقط */
+const filterBtns = document.querySelectorAll(".filter-btn"); /* جميع الأزرار */
 
 filterBtns.forEach(function (btn) {
   btn.addEventListener("click", function () {
@@ -562,6 +597,7 @@ filterBtns.forEach(function (btn) {
     /* تنشيط الزر الحالي */
     btn.classList.add("active");
 
+    /* قراءة اسم الشركة من خاصية data-brand للزر المضغوط */
     const brand = btn.dataset.brand;
 
     if (brand === "all") {
@@ -576,15 +612,18 @@ filterBtns.forEach(function (btn) {
   });
 });
 
-/* ========== 5) السلايدر ========== */
-const slides = document.querySelectorAll(".slide");
-const nextBtn = document.getElementById("nextSlide");
-const prevBtn = document.getElementById("prevSlide");
+/* ========== 5) السلايدر ==========
+   عرض الشرائح تلقائياً كل 5 ثوانٍ مع أزرار تنقل يدوية */
+const slides = document.querySelectorAll(".slide"); /* كل الشرائح */
+const nextBtn = document.getElementById("nextSlide"); /* زر التالي */
+const prevBtn = document.getElementById("prevSlide"); /* زر السابق */
 
-let currentSlide = 0;
-let slideInterval;
+let currentSlide = 0; /* رقم الشريحة المعروضة حالياً */
+let slideInterval; /* مؤقّت التبديل التلقائي */
 
+/* عرض شريحة محددة مع الالتفاف الدائري (بعد الأخير يعود للأول) */
 function showSlide(index) {
+  /* تجاوز الحدود: حل بين الشرائح ذهاباً وإياباً */
   if (index >= slides.length) {
     currentSlide = 0;
   } else if (index < 0) {
@@ -593,43 +632,50 @@ function showSlide(index) {
     currentSlide = index;
   }
 
+  /* إخفاء كل الشرائح ثم إظهار الشريحة المطلوبة فقط */
   slides.forEach(function (slide) {
     slide.classList.remove("active");
   });
   slides[currentSlide].classList.add("active");
 }
 
+/* بدء التبديل التلقائي: شريحة جديدة كل 5 ثوانٍ */
 function startAutoSlide() {
   slideInterval = setInterval(function () {
     showSlide(currentSlide + 1);
   }, 5000);
 }
 
+/* إيقاف التبديل التلقائي (قبل النقر اليدوي) */
 function stopAutoSlide() {
   clearInterval(slideInterval);
 }
 
-/* حماية: تشغيل السلايدر فقط إذا وجد */
+/* حماية: تشغيل السلايدر فقط إذا وُجد في الصفحة */
 if (nextBtn && prevBtn) {
+  /* زر التالي: أوقف التلقائي، انتقل، ثم أعده */
   nextBtn.addEventListener("click", function () {
     stopAutoSlide();
     showSlide(currentSlide + 1);
     startAutoSlide();
   });
 
+  /* زر السابق: نفس السلوك بالاتجاه المعاكس */
   prevBtn.addEventListener("click", function () {
     stopAutoSlide();
     showSlide(currentSlide - 1);
     startAutoSlide();
   });
 
+  /* بدء التشغيل التلقائي عند دخول الصفحة */
   startAutoSlide();
 }
 
-/* ========== 6) الوضع الليلي ========== */
-const darkModeBtn = document.getElementById("darkModeBtn");
-const savedDarkMode = localStorage.getItem("darkMode");
-let isDarkMode = savedDarkMode === "true";
+/* ========== 6) الوضع الليلي ==========
+   يُحفظ الاختيار في المتصفح ويُطبَّق فوراً في كل زيارة */
+const darkModeBtn = document.getElementById("darkModeBtn"); /* زر التبديل */
+const savedDarkMode = localStorage.getItem("darkMode"); /* الاختيار المحفوظ */
+let isDarkMode = savedDarkMode === "true"; /* الحالة الحالية */
 
 /* تطبيق/إزالة الوضع الليلي وتحديث الأيقونة والتخزين */
 function applyDarkMode(enabled) {
@@ -658,8 +704,8 @@ if (darkModeBtn) {
 }
 
 /* ========== 7) شريط التمرير: زر الأعلى + الزجاجية + شريط التقدم ========== */
-const backToTopBtn = document.getElementById("backToTop");
-const navbarEl = document.querySelector(".navbar");
+const backToTopBtn = document.getElementById("backToTop"); /* زر العودة للأعلى */
+const navbarEl = document.querySelector(".navbar"); /* شريط التنقل (للزجاجية) */
 
 /* شريط تقدم القراءة الذهبي (يُنشأ تلقائياً) */
 let scrollProgress = document.getElementById("scrollProgress");
@@ -669,8 +715,9 @@ if (!scrollProgress) {
   document.body.appendChild(scrollProgress);
 }
 
+/* دالة تُنفَّذ مع كل حركة تمرير (مُحسّنة بوضع passive) */
 function onScroll() {
-  const y = window.scrollY;
+  const y = window.scrollY; /* مقدار التمرير الحالي بالبكسل */
 
   if (backToTopBtn) {
     backToTopBtn.classList.toggle("show", y > 300);
@@ -686,27 +733,35 @@ function onScroll() {
   scrollProgress.style.width = max > 0 ? (y / max) * 100 + "%" : "0%";
 }
 
+/* ربط الدالة بحدث التمرير (passive: لا توقف التمرير = أداء أفضل) */
 window.addEventListener("scroll", onScroll, { passive: true });
+/* تنفيذ أول مرة لضبط الحالة عند تحميل الصفحة */
 onScroll();
 
+/* عند الضغط: عودة لأعلى الصفحة بحركة سلسة */
 if (backToTopBtn) {
   backToTopBtn.addEventListener("click", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
 
-/* ========== 8) السلة ========== */
-let cart = [];
+/* ========== 8) السلة ==========
+   كل عنصر بالسلة: { id, name, price, quantity } */
+let cart = []; /* السلة تبدأ فارغة */
 
+/* إضافة سيارة للسلة حسب رقمها (يُستدعى من زر "احجز الآن") */
 function addToCart(carId) {
+  /* البحث عن السيارة في مصفوفة cars لجلب بياناتها الكاملة */
   const car = cars.find(function (c) {
     return c.id === carId;
   });
 
+  /* هل السيارة موجودة في السلة مسبقاً؟ */
   const existing = cart.find(function (item) {
     return item.id === carId;
   });
 
+  /* موجود؟ ارفع الكمية، غير موجود؟ أضفه كعنصر جديد */
   if (existing) {
     existing.quantity += 1;
   } else {
@@ -718,15 +773,18 @@ function addToCart(carId) {
     });
   }
 
+  /* تحديث الشارة + الحفظ في المتصفح + إشعار نجاح */
   updateCartCount();
   saveCart();
   showNotification("✅ تمت الحجز: " + car.name);
 }
 
+/* تحديث رقم الشارة الصغيرة على أيقونة السلة */
 function updateCartCount() {
   const countEl = document.getElementById("cartCount");
   if (!countEl) return;
 
+  /* جمع كميات كل العناصر = العدد الكلي */
   const total = cart.reduce(function (sum, item) {
     return sum + item.quantity;
   }, 0);
@@ -748,56 +806,71 @@ function updateCartCount() {
   }
 }
 
+/* حساب المجموع الكلي: (السعر × الكمية) لكل عنصر ثم الجمع */
 function calculateTotal() {
   return cart.reduce(function (sum, item) {
     return sum + item.price * item.quantity;
   }, 0);
 }
 
+/* عند الضغط على أيقونة السلة: افتح نافذة السلة */
 const cartBtn = document.getElementById("cartBtn");
 
 if (cartBtn) {
   cartBtn.addEventListener("click", openCartModal);
 }
 
-/* ========== 9) حفظ السلة ========== */
+/* ========== 9) حفظ السلة في ذاكرة المتصفح (localStorage) ========== */
+
+/* تحويل السلة لنص JSON وتخزينها (تبقى حتى بعد إغلاق المتصفح) */
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+/* استرجاع السلة المحفوظة عند فتح الموقع من جديد */
 function loadCart() {
   const saved = localStorage.getItem("cart");
   if (saved) {
     try {
+      /* تحويل النص مرة أخرى لمصفوفة كائنات */
       cart = JSON.parse(saved);
     } catch (e) {
+      /* بيانات تالفة؟ ابدأ بسلة فارغة */
       cart = [];
     }
   }
   updateCartCount();
 }
 
+/* استرجاع السلة فور تحميل السكربت */
 loadCart();
 
-/* ========== 10) الإشعارات ========== */
+/* ========== 10) الإشعارات (Toast) ==========
+   رسالة صغيرة تظهر أسفل الشاشة وتختفي تلقائياً */
 function showNotification(message, type) {
+  /* جلب حاوية الإشعارات الموجودة في الصفحة */
   const container = document.getElementById("toastContainer");
   if (!container) return;
 
+  /* إنشاء عنصر الإشعار الجديد */
   const toast = document.createElement("div");
   toast.className = "toast";
 
+  /* النوع "خطأ"؟ أضف صنف التلوين الأحمر */
   if (type === "error") {
     toast.classList.add("error");
   }
 
+  /* إضافة النص وإدخال الإشعار داخل الحاوية */
   toast.textContent = message;
   container.appendChild(toast);
 
+  /* بعد 10 ميلي ثانية: أظهر الإشعار (حركة الدخول) */
   setTimeout(function () {
     toast.classList.add("show");
   }, 10);
 
+  /* بعد 3 ثوانٍ: أخفه ثم احذفه من الصفحة كلياً */
   setTimeout(function () {
     toast.classList.remove("show");
     setTimeout(function () {
@@ -806,26 +879,32 @@ function showNotification(message, type) {
   }, 3000);
 }
 
-/* ========== 11) المؤقت التنازلي ========== */
-const savedEndDate = localStorage.getItem("offerEndDate");
+/* ========== 11) المؤقت التنازلي ==========
+   عرض ينتهي بعد 3 أيام من أول زيارة (يُحفظ في المتصفح) */
+const savedEndDate = localStorage.getItem("offerEndDate"); /* النهاية المحفوظة */
 let offerEndDate;
 
+/* أول زيارة؟ أنشئ موعد نهاية بعد 3 أيام وخزّنه */
 if (!savedEndDate) {
   offerEndDate = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
   localStorage.setItem("offerEndDate", offerEndDate.getTime());
 } else {
+  /* زيارات لاحقة؟ استرجع الموعد نفسه */
   offerEndDate = new Date(Number(savedEndDate));
 }
 
+/* حساب المتبقي وتحديث الأرقام الأربعة (يوم/ساعة/دقيقة/ثانية) */
 function updateCountdown() {
   const now = new Date();
-  const diff = offerEndDate - now;
+  const diff = offerEndDate - now; /* المتبقي بالميلي ثانية */
 
+  /* انتهى العرض؟ أوقف المؤقت نهائياً */
   if (diff <= 0) {
     clearInterval(countdownInterval);
     return;
   }
 
+  /* تحويل المتبقي لأيام وساعات ودقائق وثوانٍ */
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
@@ -848,32 +927,36 @@ function setCountdownValue(id, value) {
   el.classList.add("tick");
 }
 
-let countdownInterval;
+let countdownInterval; /* مرجع المؤقت لإيقافه لاحقاً */
 
+/* شغّل المؤقت فقط في الصفحات التي تحوي العدّاد */
 if (document.getElementById("days")) {
-  countdownInterval = setInterval(updateCountdown, 1000);
-  updateCountdown();
+  countdownInterval = setInterval(updateCountdown, 1000); /* كل ثانية */
+  updateCountdown(); /* تنفيذ فوري دون انتظار الثانية الأولى */
 }
 
-/* ========== 12) النافذة المنبثقة ========== */
-const modal = document.getElementById("carModal");
-const closeModal = document.querySelector(".close-modal");
-const modalImage = document.getElementById("modalImage");
-const modalName = document.getElementById("modalName");
-const modalBrand = document.getElementById("modalBrand");
-const modalDesc = document.getElementById("modalDesc");
-const modalPrice = document.getElementById("modalPrice");
-const modalAddToCart = document.getElementById("modalAddToCart");
+/* ========== 12) النافذة المنبثقة (تفاصيل السيارة) ========== */
+const modal = document.getElementById("carModal"); /* الخلفية المعتمة */
+const closeModal = document.querySelector(".close-modal"); /* زر × */
+const modalImage = document.getElementById("modalImage"); /* صورة السيارة */
+const modalName = document.getElementById("modalName"); /* الاسم */
+const modalBrand = document.getElementById("modalBrand"); /* الوصف */
+const modalDesc = document.getElementById("modalDesc"); /* الوصف المفصل */
+const modalPrice = document.getElementById("modalPrice"); /* السعر */
+const modalAddToCart = document.getElementById("modalAddToCart"); /* زر الحجز */
 
-let currentModalId = null;
+let currentModalId = null; /* السيارة المعروضة حالياً في النافذة */
 
+/* فتح نافذة التفاصيل وتعبئتها ببيانات السيارة المختارة */
 function openModal(carId) {
+  /* البحث عن السيارة حسب الرقم */
   const car = cars.find(function (c) {
     return c.id === carId;
   });
 
   if (!car) return;
 
+  /* تعبئة كل حقول النافذة ببيانات السيارة */
   currentModalId = carId;
   modalImage.src = car.image;
   modalName.textContent = car.name;
@@ -881,18 +964,22 @@ function openModal(carId) {
   modalDesc.textContent = car.desc;
   modalPrice.textContent = "$" + car.price.toLocaleString();
 
+  /* إظهار النافذة (الصنف show يفعّل الأنيميشن) */
   modal.classList.add("show");
 }
 
+/* إغلاق النافذة وإفراغ السيارة الحالية */
 function closeMyModal() {
   modal.classList.remove("show");
   currentModalId = null;
 }
 
+/* إغلاق بزر × */
 if (closeModal) {
   closeModal.addEventListener("click", closeMyModal);
 }
 
+/* إغلاق بالنقر على الخلفية المعتمة (خارج المحتوى) */
 if (modal) {
   modal.addEventListener("click", function (e) {
     if (e.target === modal) {
@@ -901,6 +988,7 @@ if (modal) {
   });
 }
 
+/* زر الحجز داخل النافذة: أضف السيارة ثم أغلق */
 if (modalAddToCart) {
   modalAddToCart.addEventListener("click", function () {
     if (currentModalId !== null) {
@@ -910,7 +998,9 @@ if (modalAddToCart) {
   });
 }
 
-/* ========== 13) نافذة السلة ========== */
+/* ========== 13) نافذة السلة (تُبنى برمجياً في كل الصفحات) ========== */
+
+/* إنشاء نافذة السلة وإضافتها للصفحة مرة واحدة */
 function createCartModal() {
   const cartModal = document.createElement("div");
   cartModal.id = "cartModal";
@@ -933,19 +1023,23 @@ function createCartModal() {
   return cartModal;
 }
 
+/* إنشاء النافذة فور تحميل السكربت */
 const cartModal = createCartModal();
 
+/* فتح نافذة السلة وبناء محتواها حسب الحالة */
 function openCartModal() {
-  const container = document.getElementById("cartItems");
+  const container = document.getElementById("cartItems"); /* حاوية العناصر */
   const totalEl = document.getElementById("cartTotal");
   const clearBtn = document.getElementById("clearCartBtn");
   const checkoutBtn = document.getElementById("checkoutBtn");
 
+  /* السلة فارغة؟ اعرض رسالة وأخفِ أزرار التنفيذ */
   if (cart.length === 0) {
     container.innerHTML = "<p> سلتك فارغة</p>";
     clearBtn.style.display = "none";
     checkoutBtn.style.display = "none";
   } else {
+    /* بناء سطر لكل عنصر: الاسم × الكمية = السعر */
     let html = "";
     cart.forEach(function (item) {
       html += `
@@ -961,22 +1055,26 @@ function openCartModal() {
     checkoutBtn.style.display = "inline-block";
   }
 
+  /* تحديث الإجمالي وإظهار النافذة */
   totalEl.textContent = "$" + calculateTotal().toLocaleString();
   cartModal.classList.add("show");
 }
 
+/* إغلاق نافذة السلة بزر × */
 document
   .getElementById("closeCartModal")
   .addEventListener("click", function () {
     cartModal.classList.remove("show");
   });
 
+/* إغلاق بالنقر على الخلفية المعتمة */
 cartModal.addEventListener("click", function (e) {
   if (e.target === cartModal) {
     cartModal.classList.remove("show");
   }
 });
 
+/* زر إلغاء: تفريغ السلة كلياً وتحديث كل شيء */
 document.getElementById("clearCartBtn").addEventListener("click", function () {
   cart = [];
   saveCart();
@@ -985,12 +1083,15 @@ document.getElementById("clearCartBtn").addEventListener("click", function () {
   openCartModal();
 });
 
+/* زر إتمام الحجز: احفظ الطلب ثم أفرغ السلة */
 document.getElementById("checkoutBtn").addEventListener("click", function () {
+  /* حماية: لا يمكن إتمام سلة فارغة */
   if (cart.length === 0) {
     showNotification("🚗 أضف سيارات أولاً", "error");
     return;
   }
 
+  /* حفظ ملخص الطلب (المجموع + التاريخ) في المتصفح */
   const total = calculateTotal();
   localStorage.setItem(
     "lastOrder",
@@ -1000,18 +1101,20 @@ document.getElementById("checkoutBtn").addEventListener("click", function () {
     }),
   );
 
+  /* تفريغ السلة وإغلاق النافذة مع إشعار نجاح */
   cart = [];
   saveCart();
   updateCartCount();
   cartModal.classList.remove("show");
   showNotification("✅ تم الحجز بنجاح! الإجمالي: $" + total.toLocaleString());
 });
-/* ========== 14) صفحة من نحن: الساعة + عرض المزيد ========== */
-const liveTime = document.getElementById("liveTime");
-const liveDate = document.getElementById("liveDate");
+/* ========== 14) صفحة من نحن: الساعة الحية + عرض المزيد ========== */
+const liveTime = document.getElementById("liveTime"); /* عنصر الوقت */
+const liveDate = document.getElementById("liveDate"); /* عنصر التاريخ */
 
-/* حماية: تشغيل الساعة فقط إذا وُجدت */
+/* حماية: تشغيل الساعة فقط إذا وُجدت في الصفحة */
 if (liveTime && liveDate) {
+  /* تحديث الوقت والتاريخ بالتنسيق العربي */
   function updateClock() {
     const now = new Date();
     liveTime.textContent = now.toLocaleTimeString("ar-YE");
@@ -1023,18 +1126,20 @@ if (liveTime && liveDate) {
     });
   }
 
-  updateClock();
-  setInterval(updateClock, 1000);
+  updateClock(); /* تنفيذ فوري عند الفتح */
+  setInterval(updateClock, 1000); /* ثم التحديث كل ثانية */
 }
 
-/* زر عرض المزيد */
+/* زر عرض المزيد: يظهر/يخفي الفقرات الإضافية */
 const showMoreBtn = document.getElementById("showMoreBtn");
 const moreContent = document.getElementById("moreContent");
 
 if (showMoreBtn && moreContent) {
   showMoreBtn.addEventListener("click", function () {
+    /* تبديل الإظهار والإخفاء */
     moreContent.classList.toggle("show");
 
+    /* تغيير نص الزر حسب الحالة الجديدة */
     if (moreContent.classList.contains("show")) {
       showMoreBtn.textContent = "🙈 إخفاء";
     } else {
@@ -1043,46 +1148,54 @@ if (showMoreBtn && moreContent) {
   });
 }
 
-/* تأثير الماوس على بطاقات الإحصائيات */
-const statCards = document.querySelectorAll(".stat-card");
-
-statCards.forEach(function (card) {
-  card.addEventListener("mouseover", function () {
-    card.style.backgroundColor = "var(--primary)";
-    card.style.color = "white";
-  });
-
-  card.addEventListener("mouseout", function () {
-    card.style.backgroundColor = "";
-    card.style.color = "";
-  });
-});
+/* تأثير الماوس على بطاقات الإحصائيات
+   انتقل إلى CSS (.stat-card:hover في style.css)
+   لأن الـ JS القديم كان يخفي الرقم: خلفية حمراء + رقم أحمر */
 
 /* ========== 15) صفحة اتصل بنا: التحقق من النموذج ========== */
+/* جلب نموذج التواصل — إن لم يوجد فالصفحة الحالية ليست contact.html */
+/* الحصول على نموذج التواصل (null في الصفحات الأخرى) */
+/* كل الكود التالي يعمل فقط في صفحة اتصل بنا */
 const contactForm = document.getElementById("contactForm");
 
+/* جلب حقول الإدخال الأربعة */
+/* يعمل هذا القسم فقط في صفحة "اتصل بنا" (حيث يوجد النموذج) */
+/* عناصر الحقول الأربعة في نموذج التواصل */
 if (contactForm) {
+  /* جلب حقول النموذج الأربعة: الاسم، البريد، الهاتف، الرسالة */
   const nameInput = document.getElementById("name");
+/* دالة مساعدة: كتابة رسالة الخطأ أسفل الحقل */
   const emailInput = document.getElementById("email");
   const phoneInput = document.getElementById("phone");
+/* دالة مساعدة: كتابة نص الخطأ أسفل الحقل */
   const messageInput = document.getElementById("message");
 
+  /* دالة مساعدة: كتابة رسالة الخطأ داخل العنصر */
   function showError(el, msg) {
+/* دالة مساعدة: تفريغ رسالة الخطأ (عند صحة الحقل) */
+/* التحقق من حقل الاسم: مطلوب و3 أحرف على الأقل */
     el.textContent = msg;
   }
 
+  /* دالة مساعدة: تفريغ رسالة الخطأ عند صحة القيمة */
+/* دالة التحقق من الاسم: مطلوب و3 أحرف على الأقل */
   function clearError(el) {
     el.textContent = "";
   }
 
+  /* التحقق من الاسم: مطلوب و3 أحرف على الأقل */
   function validateName() {
-    const value = nameInput.value.trim();
+    const value = nameInput.value.trim(); /* trim لإزالة الفراغات الزائدة */
     const errorEl = document.getElementById("nameError");
+    /* حقل فارغ؟ */
     if (value === "") {
+/* التحقق من البريد الإلكتروني: مطلوب ومطابق لنمط البريد */
       showError(errorEl, "⚠️ الاسم مطلوب");
       return false;
     }
+    /* أقل من 3 أحرف؟ */
     if (value.length < 3) {
+/* دالة التحقق من البريد: مطلوب ومطابق لصيغة البريد الإلكتروني */
       showError(errorEl, "⚠️ الاسم 3 أحرف على الأقل");
       return false;
     }
@@ -1090,31 +1203,43 @@ if (contactForm) {
     return true;
   }
 
+  /* التحقق من البريد: مطلوب ومطابق لنمط البريد الصحيح */
   function validateEmail() {
     const value = emailInput.value.trim();
+/* التحقق من الهاتف: مطلوب وأرقام فقط بين 7 و15 خانة */
     const errorEl = document.getElementById("emailError");
+    /* تعبير نمطي: نص + @ + نطاق + . + امتداد */
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    /* حقل فارغ؟ */
     if (value === "") {
       showError(errorEl, "⚠️ البريد مطلوب");
+/* دالة التحقق من الهاتف: أرقام فقط بين 7 و15 خانة */
       return false;
     }
+    /* صيغة البريد غير صحيحة؟ */
     if (!emailRegex.test(value)) {
       showError(errorEl, "⚠️ البريد غير صحيح");
       return false;
     }
     clearError(errorEl);
     return true;
+/* التحقق من الرسالة: مطلوبة و10 أحرف على الأقل */
   }
 
+  /* التحقق من الهاتف: مطلوب وأرقام فقط من 7 إلى 15 رقماً */
   function validatePhone() {
     const value = phoneInput.value.trim();
     const errorEl = document.getElementById("phoneError");
-    const phoneRegex = /^[0-9]{7,15}$/;
+    const phoneRegex = /^[0-9]{7,15}$/; /* أرقام فقط بهذا الطول */
+/* دالة التحقق من الرسالة: مطلوبة و10 أحرف على الأقل */
+    /* حقل فارغ؟ */
     if (value === "") {
       showError(errorEl, "⚠️ الهاتف مطلوب");
       return false;
     }
+    /* صيغة الرقم غير صحيحة؟ */
     if (!phoneRegex.test(value)) {
+/* عند الضغط على زر الإرسال */
       showError(errorEl, "⚠️ أدخل رقم هاتف صحيح");
       return false;
     }
@@ -1122,13 +1247,17 @@ if (contactForm) {
     return true;
   }
 
+  /* التحقق من نص الرسالة: مطلوبة و10 أحرف على الأقل */
+/* دالة معالج الإرسال: تُنفّذ عند الضغط على زر "إرسال" */
   function validateMessage() {
     const value = messageInput.value.trim();
     const errorEl = document.getElementById("messageError");
+    /* حقل فارغ؟ */
     if (value === "") {
       showError(errorEl, "⚠️ الرسالة مطلوبة");
       return false;
     }
+    /* أقل من 10 أحرف؟ */
     if (value.length < 10) {
       showError(errorEl, "⚠️ الرسالة 10 أحرف على الأقل");
       return false;
@@ -1137,82 +1266,106 @@ if (contactForm) {
     return true;
   }
 
+  /* عند إرسال النموذج: تحقق من كل الحقول ثم اعرض النتيجة */
   contactForm.addEventListener("submit", function (event) {
+    /* منع السلوك الافتراضي (إعادة تحميل الصفحة) */
     event.preventDefault();
 
+    /* تشغيل التحققات الأربعة جميعها لتظهر كل الأخطاء معاً */
     const isNameValid = validateName();
     const isEmailValid = validateEmail();
     const isPhoneValid = validatePhone();
     const isMessageValid = validateMessage();
 
+    /* كل الحقول صحيحة: إشعار نجاح + تفريغ النموذج */
     if (isNameValid && isEmailValid && isPhoneValid && isMessageValid) {
       showNotification("✅ تم إرسال رسالتك بنجاح!");
       contactForm.reset();
     } else {
+      /* يوجد خطأ: إشعار خطأ بلون نبيذي */
       showNotification("❌ يرجى تصحيح الحقول", "error");
     }
   });
 }
 
-/* ========== 16) صفحة السيارات: الفرز ========== */
-let currentCars = cars;
+/* ========== 16) صفحة السيارات: الفرز ==========
+   يرتب القائمة المعروضة حالياً (بعد البحث أو الفلترة) */
+let currentCars = cars; /* القائمة الحالية المعروضة */
 
-const sortSelect = document.getElementById("sortSelect");
+const sortSelect = document.getElementById("sortSelect"); /* قائمة الفرز */
 
 if (sortSelect) {
   sortSelect.addEventListener("change", function () {
+    /* نسخة من القائمة حتى لا نعدّل الأصل */
     const sorted = currentCars.slice();
-    const value = sortSelect.value;
+    const value = sortSelect.value; /* نوع الفرز المختار */
 
+    /* الفرز حسب السعر: من الأرخص للأغلى */
     if (value === "price-asc") {
       sorted.sort(function (a, b) {
         return a.price - b.price;
       });
     } else if (value === "price-desc") {
+      /* الفرز حسب السعر: من الأغلى للأرخص */
       sorted.sort(function (a, b) {
         return b.price - a.price;
       });
     } else if (value === "name") {
+      /* الفرز أبجدياً حسب الاسم العربي */
       sorted.sort(function (a, b) {
         return a.name.localeCompare(b.name, "ar");
       });
     }
 
+    /* إعادة عرض القائمة بعد الترتيب */
     displayCars(sorted);
   });
 }
 
-/* تحديث currentCars عند الفلترة والبحث */
+/* حفظ نسخة من الدالة الأصلية قبل تزيينها */
 const originalDisplayCars = displayCars;
+
+/* تغليف displayCars: كل عرض جديد يحدّث currentCars
+   ليفرز هذا القسم ما يظهر فعلاً على الشاشة */
 displayCars = function (carList) {
+  /* حفظ آخر قائمة معروضة لتعمل السلة والنافذة والفرز عليها */
   currentCars = carList;
   originalDisplayCars(carList);
 };
 
 /* ========== 17) عرض اسم المستخدم في الشريط ========== */
+/* قراءة اسم المستخدم المحفوظ في localStorage بعد تسجيل الدخول */
 const savedUserName = localStorage.getItem("userName");
 
+/* إذا كان المستخدم مسجلاً دخوله: نضيف العناصر المناسبة */
 if (savedUserName) {
+  /* إضافة شريحة (chip) باسم المستخدم داخل أزرار الشريط */
   const navActions = document.querySelector(".nav-actions");
   if (navActions) {
+    /* إنشاء شريحة (chip) تحمل اسم المستخدم وإضافتها للشريط */
     const userChip = document.createElement("span");
     userChip.className = "user-chip";
     userChip.textContent = "👋 مرحباً، " + savedUserName;
     navActions.appendChild(userChip);
   }
 
+  /* تحويل رابط "تسجيل الدخول" إلى "خروج" بعد تسجيل الدخول */
   const loginLink = document.querySelector('.nav-links a[href="login.php"]');
   if (loginLink) {
     loginLink.textContent = "خروج 🚪";
+    /* تغيير المسار إلى سكربت الخروج حتى ينهي الجلسة */
     loginLink.href = "php/logout.php";
   }
 
+  /* في صفحة تسجيل الدخول: إظهار رسالة الترحيب بعودة المستخدم */
   const welcomeBack = document.getElementById("welcomeBack");
   if (welcomeBack) {
     welcomeBack.textContent = "مرحباً بعودتك، " + savedUserName + "! 👋";
   }
 
+  /* قراءة معامل login من الرابط لعرض إشعار الترحيب بعد الدخول */
   const nowParams = new URLSearchParams(window.location.search);
+  /* إن كان الرابط يحتوي ?login=1 (قادم من تسجيل الدخول): إشعار ترحيب */
   if (nowParams.get("login") === "1") {
     showNotification("✅ تم تسجيل الدخول! مرحباً " + savedUserName);
   }
@@ -1224,6 +1377,7 @@ if (savedUserName) {
 
 /* ---------- شاشة التحميل السينمائية (تُنشأ تلقائياً) ---------- */
 (function initPreloader() {
+  /* إنشاء عنصر شاشة التحميل (شعار + اسم + شريط) وإضافته أول الصفحة */
   const pre = document.createElement("div");
   pre.id = "preloader";
   pre.innerHTML =
@@ -1232,7 +1386,9 @@ if (savedUserName) {
     '<div class="preloader-bar"><span></span></div>';
   document.body.prepend(pre);
 
+  /* علم يمنع تنفيذ الإخفاء أكثر من مرة واحدة */
   let hidden = false;
+  /* دالة إخفاء شاشة التحميل ثم حذفها نهائياً من الصفحة */
   function hidePreloader() {
     if (hidden) return;
     hidden = true;
@@ -1297,21 +1453,27 @@ if (savedUserName) {
 
   /* إرسال قائمة الصور للكاش: السيارات + السلايدر */
   function precacheImages(registration) {
+    /* الحصول على نسخة الـ Service Worker النشطة */
     const sw = registration.active;
     if (!sw) return;
 
+    /* جمع روابط صور السيارات (60 صورة) من مصفوفة cars */
     const urls = cars.map(function (c) {
       return c.image;
     });
+    /* إضافة روابط صور السلايدر الثلاث */
     document.querySelectorAll(".slide img").forEach(function (img) {
       const src = img.currentSrc || img.src;
       if (src) urls.push(src);
     });
 
+    /* إرسال القائمة إلى الـ Service Worker ليخزّنها في الكاش */
     sw.postMessage({ type: "PRECACHE_IMAGES", urls: urls });
   }
 
+  /* التسجيل بعد اكتمال تحميل الصفحة (حتى لا يعطّل عرض الموقع) */
   window.addEventListener("load", function () {
+    /* تسجيل ملف الـ Service Worker الموجود في جذر المشروع */
     navigator.serviceWorker
       .register("sw.js")
       .then(function (registration) {

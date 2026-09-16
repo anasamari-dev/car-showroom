@@ -18,22 +18,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
     <!-- تطبيق الوضع الليلي فوراً لمنع وميض الصفحة -->
     <script>
+      // قراءة تفضيل الوضع الليلي: إن كان مفعّلاً نجهّز الصفحة للثيم الداكن
       if (localStorage.getItem("darkMode") === "true") {
+        // إضافة صنف التجهيز الداكن على الجذر لمنع الوميض الأبيض
         document.documentElement.classList.add("dark-mode-pending");
       }
+      // إضافة صنف js: إخبار CSS أن الجافاسكربت يعمل لتفعيل حركات الظهور عند التمرير
       document.documentElement.classList.add("js");
     </script>
+    <!-- تنسيق مؤقت للوضع الليلي قبل تحميل ملف CSS (يمنع الوميض الأبيض) -->
     <style>
+      /* تطبيق الخلفية والنص الداكنين مباشرة على body */
+      /* تنسيق مؤقت: خلفية داكنة للجسم قبل اكتمال تحميل ملف CSS */
       .dark-mode-pending body {
         background-color: #1c1917;
         color: #f5f5f4;
       }
     </style>
+    <!-- مطابقة ألوان المتصفح مع الثيم -->
     <meta name="color-scheme" content="light dark" />
   </head>
   <body>
     <!-- ========== شريط التنقل ========== -->
     <nav class="navbar">
+      <!-- حاوية شريط التنقل (لتوسيط المحتوى) -->
       <div class="container">
         <!-- الشعار -->
         <div class="logo">
@@ -49,7 +57,9 @@
         </ul>
         <!-- الأزرار -->
         <div class="nav-actions">
+          <!-- زر تبديل الوضع الليلي/النهاري -->
           <button id="darkModeBtn" class="btn-icon">🌙</button>
+          <!-- زر السلة: الشارة تُظهر عدد السيارات المحجوزة -->
           <button id="cartBtn" class="btn-icon">
             🛒 <span id="cartCount">0</span>
           </button>
@@ -59,22 +69,29 @@
 
     <!-- ========== ترويسة الصفحة ========== -->
     <section class="page-header">
+      <!-- حاوية ترويسة الصفحة -->
       <div class="container">
+        <!-- عنوان الصفحة -->
         <h1>من نحن</h1>
+        <!-- وصف مختصر أسفل العنوان -->
         <p>تعرّف على قصة معرض النخبة</p>
       </div>
     </section>
 
     <!-- ========== قسم الساعة ========== -->
     <section class="clock-section">
+      <!-- حاوية قسم الساعة -->
       <div class="container">
+        <!-- عنوان القسم -->
         <h2 class="section-title">🕐 الوقت الآن</h2>
         <div class="countdown">
           <div class="time-box">
+            <!-- مربع الوقت الحالي: يُحدّث كل ثانية بـ JavaScript -->
             <span id="liveTime">00:00:00</span>
             <small>الوقت</small>
           </div>
           <div class="time-box">
+            <!-- مربع التاريخ: يُحدّث بـ JavaScript -->
             <span id="liveDate">--</span>
             <small>التاريخ</small>
           </div>
@@ -84,12 +101,15 @@
 
     <!-- ========== قسم القصة ========== -->
     <section class="about-section">
+      <!-- حاوية قسم القصة -->
       <div class="container">
         <h2 class="section-title">قصتنا</h2>
+        <!-- الفقرة الظاهرة دائماً في قسم القصة -->
         <p>
           تأسس معرض النخبة عام 2015 برؤية واضحة: توفير أفخم السيارات العالمية
           بأسعار تنافسية وخدمة عملاء استثنائية.
         </p>
+        <!-- المحتوى الإضافي: مخفي افتراضياً ويظهر عند الضغط على الزر -->
         <div id="moreContent" class="more-content">
           <p>
             نعمل مع أكبر الشركات المصنعة عالمياً مثل لكزس، مرسيدس، BMW، وأودي
@@ -100,23 +120,29 @@
             تناسب احتياجاتك وميزانيتك.
           </p>
         </div>
+        <!-- زر إظهار/إخفاء المحتوى الإضافي (يتحكم به JavaScript) -->
         <button id="showMoreBtn" class="btn-primary">👁️ عرض المزيد</button>
       </div>
     </section>
 
     <!-- ========== قسم الإحصائيات ========== -->
     <section class="stats-section">
+      <!-- حاوية قسم الإحصائيات -->
       <div class="container">
         <h2 class="section-title">📊 أرقامنا</h2>
+        <!-- شبكة بطاقات الإحصائيات: ثلاثة أعمدة -->
         <div class="stats-grid">
+          <!-- بطاقة 1: عدد العملاء -->
           <div class="stat-card">
             <h3>+2000</h3>
             <p>عميل سعيد</p>
           </div>
+          <!-- بطاقة 2: عدد السيارات المتاحة -->
           <div class="stat-card">
             <h3>+150</h3>
             <p>سيارة متاحة</p>
           </div>
+          <!-- بطاقة 3: سنوات الخبرة -->
           <div class="stat-card">
             <h3>10</h3>
             <p>سنوات خبرة</p>
@@ -127,12 +153,16 @@
 
     <!-- ========== التذييل ========== -->
     <footer class="footer">
+      <!-- حاوية التذييل -->
       <div class="container">
+        <!-- حاوية أعمدة التذييل الثلاثة -->
         <div class="footer-content">
+          <!-- العمود الأول: تعريف مختصر بالمعرض -->
           <div class="footer-col">
             <h3>🏎️ النخبة</h3>
             <p>أفخم السيارات العالمية</p>
           </div>
+          <!-- العمود الثاني: روابط سريعة للصفحات -->
           <div class="footer-col">
             <h3>روابط سريعة</h3>
             <ul>
@@ -141,8 +171,10 @@
               <li><a href="login.php">دخول</a></li>
             </ul>
           </div>
+          <!-- العمود الثالث: أيقونات التواصل الاجتماعي -->
           <div class="footer-col">
             <h3>تابعنا</h3>
+            <!-- صف أيقونات التواصل الاجتماعي -->
             <div class="social">
               <a href="#" class="social-icon">📘</a>
               <a href="#" class="social-icon">📷</a>
@@ -150,6 +182,7 @@
             </div>
           </div>
         </div>
+        <!-- سطر حقوق النشر -->
         <div class="copyright">
           <p>© 2026 معرض النخبة. جميع الحقوق محفوظة.</p>
         </div>

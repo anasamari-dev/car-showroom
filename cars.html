@@ -18,26 +18,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
     <!-- تطبيق الوضع الليلي فوراً لمنع وميض الصفحة -->
     <script>
+      // قراءة تفضيل الوضع الليلي: إن كان مفعّلاً نجهّز الصفحة للثيم الداكن
       if (localStorage.getItem("darkMode") === "true") {
+        // إضافة صنف التجهيز الداكن على الجذر لمنع الوميض الأبيض
         document.documentElement.classList.add("dark-mode-pending");
       }
+      // إضافة صنف js: إخبار CSS أن الجافاسكربت يعمل لتفعيل حركات الظهور عند التمرير
       document.documentElement.classList.add("js");
     </script>
+    <!-- تنسيق مؤقت للوضع الليلي قبل تحميل ملف CSS (يمنع الوميض الأبيض) -->
     <style>
+      /* تطبيق الخلفية والنص الداكنين مباشرة على body */
+      /* تنسيق مؤقت: خلفية داكنة للجسم قبل اكتمال تحميل ملف CSS */
       .dark-mode-pending body {
         background-color: #1c1917;
         color: #f5f5f4;
       }
     </style>
+    <!-- مطابقة ألوان المتصفح مع الثيم -->
     <meta name="color-scheme" content="light dark" />
   </head>
   <body>
     <!-- ========== شريط التنقل ========== -->
     <nav class="navbar">
+      <!-- حاوية شريط التنقل: الشعار + الروابط + الأزرار -->
       <div class="container">
         <div class="logo">
+          <!-- شعار المعرض (بتأثير اللمعان الذهبي) -->
           <h2>🏎️ النخبة</h2>
         </div>
+        <!-- روابط التنقل بين الصفحات (يُضاف للرابط النشط class="active") -->
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html">الرئيسية</a></li>
           <li><a href="cars.html" class="active">السيارات</a></li>
@@ -46,8 +56,11 @@
           <li><a href="login.php">دخول</a></li>
         </ul>
         <div class="nav-actions">
+          <!-- زر تبديل الوضع الليلي/النهاري -->
           <button id="darkModeBtn" class="btn-icon">🌙</button>
+          <!-- زر السلة: الشارة تُظهر عدد السيارات المحجوزة -->
           <button id="cartBtn" class="btn-icon">
+            <!-- أيقونة السلة: والرقم بجانبها يوضح عدد السيارات المحجوزة -->
             <span id="cartCount">0</span>
           </button>
         </div>
@@ -56,30 +69,41 @@
 
     <!-- ========== ترويسة الصفحة ========== -->
     <section class="page-header">
+      <!-- حاوية ترويسة الصفحة -->
       <div class="container">
+        <!-- عنوان الصفحة -->
         <h1>جميع السيارات</h1>
+        <!-- وصف مختصر أسفل العنوان -->
         <p>تصفح واختر سيارتك المثالية</p>
       </div>
     </section>
 
     <!-- ========== قسم السيارات ========== -->
     <section class="cars-section">
+      <!-- حاوية قسم السيارات -->
       <div class="container">
+        <!-- عنوان قسم قائمة السيارات الكاملة -->
         <h2 class="section-title">قائمتنا الكاملة</h2>
 
-        <!-- البحث -->
+        <!-- ========== البحث ========== -->
+        <!-- صندوق البحث: حقل نص + زر بحث -->
         <div class="search-box">
+          <!-- حقل إدخال نص البحث عن سيارة -->
           <input
             type="text"
             id="searchInput"
             placeholder="🔍 ابحث عن سيارة..."
           />
+          <!-- زر تنفيذ البحث -->
           <button id="searchBtn" class="btn-primary">بحث</button>
         </div>
 
-        <!-- الفلترة -->
+        <!-- ========== الفلترة حسب الشركة ========== -->
+        <!-- كل زر يحمل data-brand الذي يطابق اسم الشركة في مصفوفة cars -->
         <div class="filter-buttons">
+          <!-- زر عرض كل السيارات (نشط افتراضياً) -->
           <button class="filter-btn active" data-brand="all">الكل</button>
+          <!-- أزرار فلترة حسب الشركة المصنعة -->
           <button class="filter-btn" data-brand="lexus">لكزس</button>
           <button class="filter-btn" data-brand="toyota">تويوتا</button>
           <button class="filter-btn" data-brand="bmw">BMW</button>
@@ -97,9 +121,13 @@
           <button class="filter-btn" data-brand="subaru">سوبارو</button>
         </div>
 
-        <!-- الفرز -->
+        <!-- ========== الفرز ========== -->
+        <!-- شريط الفرز: قائمة منسدلة لتغيير ترتيب عرض السيارات -->
+        <!-- حاوية شريط الفرز (تسمية + قائمة منسدلة) -->
         <div class="sort-bar">
+          <!-- تسمية القائمة المنسدلة -->
           <label for="sortSelect">ترتيب حسب:</label>
+          <!-- القائمة المنسدلة: كل قيمة يقرأها JavaScript لإعادة الترتيب -->
           <select id="sortSelect" class="sort-select">
             <option value="default">الافتراضي</option>
             <option value="price-asc">السعر: الأقل للأعلى</option>
@@ -108,19 +136,23 @@
           </select>
         </div>
 
-        <!-- شبكة السيارات -->
+        <!-- شبكة السيارات: تُملأ ديناميكياً من JavaScript -->
         <div id="carsGrid" class="cars-grid"></div>
       </div>
     </section>
 
     <!-- ========== التذييل ========== -->
     <footer class="footer">
+      <!-- حاوية التذييل: تجمع الأعمدة وحقوق النشر -->
       <div class="container">
+        <!-- حاوية أعمدة التذييل الثلاثة -->
         <div class="footer-content">
+          <!-- العمود الأول: تعريف مختصر بالمعرض -->
           <div class="footer-col">
             <h3>🏎️ النخبة</h3>
             <p>أفخم السيارات العالمية</p>
           </div>
+          <!-- العمود الثاني: روابط سريعة للصفحات -->
           <div class="footer-col">
             <h3>روابط سريعة</h3>
             <ul>
@@ -129,6 +161,7 @@
               <li><a href="login.php">دخول</a></li>
             </ul>
           </div>
+          <!-- العمود الثالث: أيقونات التواصل الاجتماعي -->
           <div class="footer-col">
             <h3>تابعنا</h3>
             <div class="social">
@@ -138,6 +171,7 @@
             </div>
           </div>
         </div>
+        <!-- سطر حقوق النشر -->
         <div class="copyright">
           <p>© 2026 معرض النخبة. جميع الحقوق محفوظة.</p>
         </div>
@@ -149,18 +183,25 @@
 
     <!-- نافذة التفاصيل -->
     <div id="carModal" class="modal">
+      <!-- صندوق محتوى النافذة: يتبع الثيم الفاتح/الداكن -->
       <div class="modal-content">
+        <!-- زر إغلاق النافذة (×) -->
         <span class="close-modal">&times;</span>
+        <!-- صورة السيارة داخل النافذة -->
         <img id="modalImage" alt="" />
+        <!-- اسم السيارة -->
         <h2 id="modalName"></h2>
+        <!-- اسم الشركة المصنعة -->
         <p id="modalBrand"></p>
+        <!-- وصف السيارة -->
         <p id="modalDesc"></p>
+        <!-- سعر السيارة -->
         <p class="price" id="modalPrice"></p>
         <button id="modalAddToCart" class="btn-primary">🛒 احجز الآن</button>
       </div>
     </div>
 
-    <!-- حاوية الإشعارات -->
+    <!-- حاوية الإشعارات: يعرض فيها JavaScript رسائل الحجز والتنبيهات -->
     <div id="toastContainer" class="toast-container"></div>
 
     <!-- ربط JavaScript -->

@@ -60,9 +60,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <!-- تحديد ترميز الأحرف لدعم العربية -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- عنوان الصفحة في المتصفح -->
     <title>معرض النخبة - تسجيل الدخول</title>
+    <!-- ربط ملف التنسيق الخارجي -->
     <link rel="stylesheet" href="css/style.css">
     <!-- اتصال مسبق لتسريع تحميل الخطوط والصور -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,17 +76,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <!-- تطبيق الوضع الليلي فوراً لمنع وميض الصفحة -->
     <script>
+      // قراءة تفضيل الوضع الليلي: إن كان مفعّلاً نجهّز الصفحة للثيم الداكن
       if (localStorage.getItem("darkMode") === "true") {
+        // إضافة صنف التجهيز الداكن على الجذر لمنع الوميض الأبيض
         document.documentElement.classList.add("dark-mode-pending");
       }
+      // إضافة صنف js: إخبار CSS أن الجافاسكربت يعمل لتفعيل حركات الظهور عند التمرير
       document.documentElement.classList.add("js");
     </script>
+    <!-- تنسيق مؤقت للوضع الليلي قبل تحميل ملف CSS (يمنع الوميض الأبيض) -->
     <style>
+      /* تنسيق مؤقت: خلفية داكنة للجسم قبل اكتمال تحميل ملف CSS */
       .dark-mode-pending body {
         background-color: #1c1917;
         color: #f5f5f4;
       }
     </style>
+    <!-- مطابقة ألوان المتصفح مع الثيم -->
     <meta name="color-scheme" content="light dark">
 </head>
 <body>
@@ -92,8 +101,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <nav class="navbar">
         <div class="container">
             <div class="logo">
+                <!-- شعار المعرض (بتأثير اللمعان الذهبي) -->
                 <h2>🏎️ النخبة</h2>
             </div>
+            <!-- روابط التنقل بين الصفحات -->
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="cars.html">السيارات</a></li>
@@ -102,7 +113,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <li><a href="login.php" class="active">دخول</a></li>
             </ul>
             <div class="nav-actions">
+                <!-- زر تبديل الوضع الليلي/النهاري -->
                 <button id="darkModeBtn" class="btn-icon"></button>
+                <!-- زر السلة: الشارة تُظهر عدد السيارات المحجوزة -->
                 <button id="cartBtn" class="btn-icon">
                     🛒 <span id="cartCount">0</span>
                 </button>
@@ -113,7 +126,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- ========== ترويسة الصفحة ========== -->
     <section class="page-header">
         <div class="container">
+            <!-- عنوان الصفحة -->
             <h1>تسجيل الدخول</h1>
+            <!-- وصف مختصر أسفل العنوان -->
             <p>مرحباً بعودتك إلى النخبة</p>
         </div>
     </section>
@@ -161,10 +176,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <!-- العمود الأول: تعريف مختصر بالمعرض -->
                 <div class="footer-col">
                     <h3>🏎️ النخبة</h3>
                     <p>أفخم السيارات العالمية</p>
                 </div>
+                <!-- العمود الثاني: روابط سريعة للصفحات -->
                 <div class="footer-col">
                     <h3>روابط سريعة</h3>
                     <ul>
@@ -173,6 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <li><a href="contact.html">اتصل بنا</a></li>
                     </ul>
                 </div>
+                <!-- العمود الثالث: أيقونات التواصل الاجتماعي -->
                 <div class="footer-col">
                     <h3>تابعنا</h3>
                     <div class="social">
@@ -182,6 +200,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                 </div>
             </div>
+                <!-- سطر حقوق النشر -->
             <div class="copyright">
                 <p>© 2026 معرض النخبة. جميع الحقوق محفوظة.</p>
             </div>
@@ -199,14 +218,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <!-- سكربت زر العين -->
     <script>
+        // جلب زر العين وحقل كلمة المرور
         const toggleBtn = document.getElementById("togglePassword");
         const passField = document.getElementById("password");
         
+        // التحقق من وجود العنصرين قبل ربط الحدث (حماية من الخطأ)
         if (toggleBtn && passField) {
+            // عند الضغط على زر العين: بدّل نوع الحقل بين password/text
             toggleBtn.addEventListener("click", function() {
+                // الحقل مخفي: أظهر كلمة المرور على شكل نص
                 if (passField.type === "password") {
                     passField.type = "text";
                     toggleBtn.textContent = "";
+                // الحقل ظاهر: أخفِ كلمة المرور وأعد أيقونة العين
                 } else {
                     passField.type = "password";
                     toggleBtn.textContent = "👁️";
